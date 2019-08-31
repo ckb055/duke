@@ -1,4 +1,11 @@
-import java.util.*;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.File;
+import java.text.ParseException;
+
 
 public class Duke {
     public static void main(String[] args) {
@@ -13,12 +20,14 @@ public class Duke {
 
         ArrayList<Task> tasks = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
+        boolean dukeIsRunning = true;
 
-        while (true) {
+        while (dukeIsRunning) {
             String next = sc.nextLine();
             String firstWord = next.split(" ")[0];
             if (next.equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!");
+                dukeIsRunning = false;
             } else if (next.equals("list")) {
                 for (int i = 0; i < tasks.size(); i++) {
                     System.out.println(i + 1 + ". " + tasks.get(i));
@@ -51,17 +60,25 @@ public class Duke {
                             break;
                         case "deadline":
                             String dueDateDeadline = remaining.split("/by ")[1];
-                            Task deadline = new Deadline(desc, dueDateDeadline);
-                            tasks.add(deadline);
-                            System.out.println("Got it. I've added this task: \n\t"
-                                    + deadline + "\n" + "Now you have " + tasks.size() + " tasks in the list.");
+                            try {
+                                Task deadline = new Deadline(desc, dueDateDeadline);
+                                tasks.add(deadline);
+                                System.out.println("Got it. I've added this task: \n\t"
+                                        + deadline + "\n" + "Now you have " + tasks.size() + " tasks in the list.");
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
                             break;
                         case "event":
                             String dueDateEvent = remaining.split("/at ")[1];
-                            Task event = new Event(desc, dueDateEvent);
-                            tasks.add(event);
-                            System.out.println("Got it. I've added this task: \n\t"
-                                    + event + "\n" + "Now you have " + tasks.size() + " tasks in the list.");
+                            try {
+                                Task event = new Event(desc, dueDateEvent);
+                                tasks.add(event);
+                                System.out.println("Got it. I've added this task: \n\t"
+                                        + event + "\n" + "Now you have " + tasks.size() + " tasks in the list.");
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
                             break;
                         default:
                             throw new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
