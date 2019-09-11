@@ -17,7 +17,7 @@ public class DialogBox extends HBox {
     public DialogBox(Label l, ImageView iv) {
         text = l;
         displayPicture = iv;
-        text.setFont(new Font("Calibri Italic", 13));
+        text.setFont(new Font("Arial", 11.5));
         text.setTextFill(Color.GOLD);
         text.setWrapText(true);
         displayPicture.setFitWidth(100.0);

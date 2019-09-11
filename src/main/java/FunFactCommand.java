@@ -10,7 +10,7 @@ public class FunFactCommand extends Command{
 
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) {
-        return ui.printFunFact() + "\n" + storage.getFunFact(randomInt);
+        return ui.printFunFact() + "\n\t" + storage.getFunFact(randomInt);
     }
 
     /**
