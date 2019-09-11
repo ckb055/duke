@@ -13,11 +13,11 @@ public class DialogBox extends HBox {
 
     private Label text;
     private ImageView displayPicture;
-    
+
     public DialogBox(Label l, ImageView iv) {
         text = l;
         displayPicture = iv;
-        text.setFont(new Font("Elephant", 11));
+        text.setFont(new Font("Calibri Italic", 13));
         text.setTextFill(Color.GOLD);
         text.setWrapText(true);
         displayPicture.setFitWidth(100.0);
