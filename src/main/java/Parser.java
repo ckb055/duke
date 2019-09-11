@@ -27,6 +27,8 @@ public class Parser {
                 case "delete":
                     int indexDelete = Integer.parseInt(userInput[1]);
                     return new DeleteCommand(indexDelete);
+                case "funfact":
+                    return new FunFactCommand();
                 case "massDelete":
                     String[] indexRanges = userInput[1].split(" ", 2);
                     int indexStart = Integer.parseInt(indexRanges[0]);

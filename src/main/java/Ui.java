@@ -69,6 +69,10 @@ public class Ui {
         tasks.showList()); // this prints the list of tasks
     }
 
+    public String printFunFact() {
+        return "Did you know that..?";
+    }
+
     public String showLine() {
         return ("___________________________________________________");
     }
